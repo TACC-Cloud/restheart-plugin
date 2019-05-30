@@ -1,0 +1,308 @@
+# user testuser7
+# tenant header
+# host https://dev.tenants.aloedev.tacc.cloud
+# complex 2075488864155144681-242ac1110-0001-012
+
+###  metadata list from rsthrt
+GET {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  metadata list from aloe
+GET {{host}}/meta/v2/data
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  metadata details (if no uuid exists empty result is returned)
+GET {{host}}/meta/v2/data/{{metauuid}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  metadata create key value pair
+POST {{host}}/meta/v2/data/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "testmeta1",
+  "value": "Test metadata item"
+}
+
+###
+
+###  metadata create complex form
+POST {{host}}/meta/v2/data/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "testmeata1",
+  "value": {
+    "title": "testmeta2",
+    "props": {
+      "list": [1,2,"3"]
+    }
+  }
+}
+
+###
+
+###  metadata update
+POST {{host}}/meta/v2/data/{{metauuid}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "testmeta1",
+  "value": "Test metadata item",
+  "associationIds": ["2075488864155144681-242ac1110-0001-012"]
+}
+
+###
+
+###  sgci public metadata query
+# q=%7B%20%22tenantId%22%3A%22sgci%22%2C%22owner%22%3A%22sg_admin%22%2C%20%22value.name%22%3A%20%20%22DataOne%22%20%7D%20
+# q=%7B%22name%22%3A%22sg_catalog_gateways%22%7D&limit=200
+GET {{host}}q=%7B%20%22tenantId%22%3A%22sgci%22%2C%22owner%22%3A%22sg_admin%22%2C%20%22value.name%22%3A%20%20%22DataOne%22%20%7D%20&limit=200
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  harika designsafe metadata create complex form (has "."s in field name which makes mongo hurl)
+POST {{host}}/meta/v2/data/
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name" : "ds_apps",
+  "value" : {
+    "definition" : {
+      "status" : "success",
+      "message" : null,
+      "version" : "2.2.22-r7deb380",
+      "result" : {
+        "id" : "Kalpana-1.0.2",
+        "name" : "Kalpana",
+        "icon" : null,
+        "uuid" : "373953457321808361-242ac116-0001-005",
+        "parallelism" : "SERIAL",
+        "defaultProcessorsPerNode" : 16,
+        "defaultMemoryPerNode" : 92,
+        "defaultNodeCount" : 1,
+        "defaultMaxRunTime" : "1:00:00",
+        "defaultQueue" : "large",
+        "version" : "1.0.2",
+        "revision" : 15,
+        "isPublic" : false,
+        "helpURI" : "https://ccht.ccee.ncsu.edu/how-to-run-kalpana/",
+        "label" : "Kalpana",
+        "owner" : "hgurram",
+        "shortDescription" : "Kalpana converts ADCIRC output files in netCDF format to Google Earth (kmz) or GIS shapefiles.",
+        "longDescription" : "Kalpana converts ADCIRC output files in netCDF format to Google Earth (kmz) or GIS shapefiles for use with conventional GIS software.",
+        "tags" : [ "DesignSafe", "hazards", "NHERI", "desktop", "netcdf", "python", "appIcon:ADCIRC", "appCategory:Data Processing" ],
+        "ontology" : [ ],
+        "executionType" : "HPC",
+        "executionSystem" : "designsafe.community.exec.stampede2.nores",
+        "deploymentPath" : "hgurram/adcirc/kalpana",
+        "deploymentSystem" : "designsafe.storage.default",
+        "templatePath" : "wrapper.sh",
+        "testPath" : "test/test.sh",
+        "checkpointable" : false,
+        "lastModified" : "2019-02-08T11:08:20.000-06:00",
+        "modules" : [ ],
+        "available" : true,
+        "inputs" : [ {
+          "id" : "workingDirectory",
+          "value" : {
+            "validator" : "",
+            "visible" : true,
+            "required" : true,
+            "order" : 0,
+            "enquote" : false,
+            "default" : "agave://designsafe.storage.default/"
+          },
+          "details" : {
+            "label" : "Working Directory",
+            "description" : "The directory containing the files that you want to work on. This directory and its files will be copied to where your kalpana session runs. You can drag the link for the directory from the Data Browser on the left, or click the 'Select Input' button and then select the directory.",
+            "argument" : null,
+            "showArgument" : false,
+            "repeatArgument" : false
+          },
+          "semantics" : {
+            "minCardinality" : 1,
+            "maxCardinality" : 1,
+            "ontology" : [ "xsd:string" ],
+            "fileTypes" : [ "raw-0" ]
+          }
+        } ],
+        "parameters" : [ {
+          "id" : "strom",
+          "value" : {
+            "visible" : true,
+            "required" : true,
+            "type" : "string",
+            "order" : 0,
+            "enquote" : false,
+            "default" : "",
+            "validator" : ""
+          },
+          "details" : {
+            "label" : "Name of the strom",
+            "description" : "Please enter the name of the Strom.",
+            "argument" : null,
+            "showArgument" : false,
+            "repeatArgument" : false
+          },
+          "semantics" : {
+            "minCardinality" : 1,
+            "maxCardinality" : 1,
+            "ontology" : [ "xs:string" ]
+          }
+        }, {
+          "id" : "polytype",
+          "value" : {
+            "visible" : true,
+            "required" : true,
+            "type" : "enumeration",
+            "order" : 0,
+            "enquote" : false,
+            "default" : "polygon",
+            "enum_values" : [ {
+              "polyline" : "polyline"
+            }, {
+              "polygon" : "polygon"
+            } ]
+          },
+          "details" : {
+            "label" : "Vector Shape",
+            "description" : "Please enter your choice of vector shape.",
+            "argument" : null,
+            "showArgument" : false,
+            "repeatArgument" : false
+          },
+          "semantics" : {
+            "minCardinality" : 1,
+            "maxCardinality" : 1,
+            "ontology" : [ "xs:enumeration", "xs:string" ]
+          }
+        }, {
+          "id" : "contour",
+          "value" : {
+            "visible" : true,
+            "required" : true,
+            "type" : "enumeration",
+            "order" : 0,
+            "enquote" : false,
+            "default" : "contourrange",
+            "enum_values" : [ {
+              "contourrange" : "contourrange"
+            }, {
+              "contourlevel" : "contourlevel"
+            } ]
+          },
+          "details" : {
+            "label" : "Contour type",
+            "description" : "Please enter your choise of contour type'.",
+            "argument" : null,
+            "showArgument" : false,
+            "repeatArgument" : false
+          },
+          "semantics" : {
+            "minCardinality" : 1,
+            "maxCardinality" : 1,
+            "ontology" : [ "xs:enumeration", "xs:string" ]
+          }
+        }, {
+          "id" : "range",
+          "value" : {
+            "visible" : true,
+            "required" : true,
+            "type" : "string",
+            "order" : 0,
+            "enquote" : false,
+            "default" : "",
+            "validator" : ""
+          },
+          "details" : {
+            "label" : "Countour Range",
+            "description" : "Please enter the number for countour range if you select countourrange enter '0 5 0.5', for countourlevel enter '0 1 2 3 4 5 6 7 8 9 10 11 12'.",
+            "argument" : null,
+            "showArgument" : false,
+            "repeatArgument" : false
+          },
+          "semantics" : {
+            "minCardinality" : 1,
+            "maxCardinality" : 1,
+            "ontology" : [ "xs:string" ]
+          }
+        }, {
+          "id" : "units",
+          "value" : {
+            "visible" : true,
+            "required" : true,
+            "type" : "enumeration",
+            "order" : 0,
+            "enquote" : false,
+            "default" : "english",
+            "enum_values" : [ {
+              "english" : "english"
+            }, {
+              "SI" : "SI"
+            } ]
+          },
+          "details" : {
+            "label" : "Units",
+            "description" : "Please enter your choise of units ",
+            "argument" : null,
+            "showArgument" : false,
+            "repeatArgument" : false
+          },
+          "semantics" : {
+            "minCardinality" : 1,
+            "maxCardinality" : 1,
+            "ontology" : [ "xs:enumeration", "xs:string" ]
+          }
+        } ],
+        "outputs" : [ ],
+        "_links" : {
+          "self" : {
+            "href" : "https://agave.designsafe-ci.org/apps/v2/Kalpana-1.0.2"
+          },
+          "executionSystem" : {
+            "href" : "https://agave.designsafe-ci.org/systems/v2/designsafe.community.exec.stampede2.nores"
+          },
+          "storageSystem" : {
+            "href" : "https://agave.designsafe-ci.org/systems/v2/designsafe.storage.default"
+          },
+          "history" : {
+            "href" : "https://agave.designsafe-ci.org/apps/v2/Kalpana-1.0.2/history"
+          },
+          "metadata" : {
+            "href" : "https://agave.designsafe-ci.org/meta/v2/data/?q=%7B%22associationIds%22%3A%22373953457321808361-242ac116-0001-005%22%7D"
+          },
+          "owner" : {
+            "href" : "https://agave.designsafe-ci.org/profiles/v2/hgurram"
+          },
+          "permissions" : {
+            "href" : "https://agave.designsafe-ci.org/apps/v2/Kalpana-1.0.2/pems"
+          }
+        }
+      }
+    },
+    "type" : "agave"
+  }
+}
+
+###
+
+
+
+
+

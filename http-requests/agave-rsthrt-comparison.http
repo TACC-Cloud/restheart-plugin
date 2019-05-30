@@ -1,0 +1,21 @@
+# test restheart performance thru backdoor without going thru auth server
+# use aloe-dev-rsthrt environment and basic auth
+# returns the default number of metadata collection items of 100
+
+# restheart call to aloe dev 2 via proxy 3.26
+#
+###   run with   aloe-dev-rh-bearer
+GET {{host}}/rh/v2/api/metadata
+# Authorization: Basic {{user}} {{pass}}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   run with aloe-dev-bearer
+GET {{host}}/meta/v2/data
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
