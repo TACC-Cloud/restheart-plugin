@@ -17,8 +17,14 @@ import org.slf4j.LoggerFactory;
 import java.util.*;
 
 /**
- * factory for ALOE JWT AuthenticationMechanism
+ * This class extracts the wso2 generated jwt token and the tenant value
+ * from header name and follows the sequence
+ *     if token is verified
+ *        create Account wht the <user> <roles> <tenant> info
+ *     if everything checks out return Authenticated
+ *     else return NOT Authenticated
  *
+ * @return
  * @author sterry1 modified from    @author Andrea Di Cesare <andrea@softinstigate.com>
  */
 public class AloeJwtAuthenticationManagerFactory implements AuthenticationMechanismFactory {
@@ -27,7 +33,6 @@ public class AloeJwtAuthenticationManagerFactory implements AuthenticationMechan
 
     public static final String JWT_AUTH_HEADER_PREFIX = "X-JWT-Assertion";
     
-
     @Override
     public AuthenticationMechanism build(Map<String, Object> args, IdentityManager idm) {
         
@@ -36,13 +41,6 @@ public class AloeJwtAuthenticationManagerFactory implements AuthenticationMechan
             public AuthenticationMechanismOutcome
                     authenticate(HttpServerExchange hse, SecurityContext sc) {
                 try {
-                    // pull the jwt token and tenant value from the jwt header
-                    // process the token with AloeJWTProcessor
-                    // if token is verified
-                    //     create Account wht the <user> <roles> <tenant> info
-                    // if everything checks out return Authenticated
-                    // else return not Authenticated
-                    
                     Map<String,String>tenantAndToken = getTenanatAndToken(hse);
                     boolean readyToProcess = tenantAndToken != null;
                     
@@ -60,7 +58,6 @@ public class AloeJwtAuthenticationManagerFactory implements AuthenticationMechan
                         // if we verified the token
                         // we need the roles, tenant and userid
                         // the roles need to be in a Set<String>
-                        
                         String _roles = aloeJWTProcessor.roles;
                         Set<String> roles = new LinkedHashSet<>();
                         boolean rolesInitialized = false;

@@ -13,10 +13,22 @@ public class AloeIdentityManager extends AbstractAloeSecurityManager implements 
   
   private final Map<String, SimpleAccount> accounts = new HashMap<>();
   
+  /**
+   * This class is the implementation of the IdentityManager interface that allows authentication
+   * in RestHeart server behind our API Gateway.
+   *
+   * @param arguments
+   * @throws FileNotFoundException
+   * @throws UnsupportedEncodingException
+   */
   public AloeIdentityManager(Map<String, Object> arguments) throws FileNotFoundException, UnsupportedEncodingException {
     init(arguments, "users");
   }
   
+  /**
+   * Reads in the configuration from the restheart.yml and security.yml files
+   * @return
+   */
   @Override
   Consumer<? super Map<String, Object>> consumeConfiguration() {
     return u -> {

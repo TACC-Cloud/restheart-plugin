@@ -28,7 +28,8 @@ import java.util.function.Consumer;
 
 /**
  *
- * @author Maurizio Turatti {@literal <maurizio@softinstigate.com>}
+ * origninal @author Maurizio Turatti {@literal <maurizio@softinstigate.com>}
+ * @author Steve Terry
  */
 abstract class AbstractAloeSecurityManager {
 
