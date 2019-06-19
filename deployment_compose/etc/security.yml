@@ -54,8 +54,8 @@ permissions:
   - role: admins
     predicate: path-prefix[path="/"]
 
-  # Users with role 'Internal/dev_staging-services-admin' can do anything
-  - role: Internal/dev_staging-services-admin
+  # Users with role 'Internal/dev-services-admin' can do anything
+  - role: Internal/dev-services-admin
     predicate: path-prefix[path="/"]
 
   # Not authenticated user can only GET any resource under the /publicdb URI

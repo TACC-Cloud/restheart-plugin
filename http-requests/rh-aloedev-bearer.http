@@ -59,7 +59,7 @@ Content-Type: application/json
 ###
 
 ###    create documnent one
-POST {{host}}/api/metadata
+POST {{host}}/rh/v2/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -71,14 +71,14 @@ Content-Type: application/json
 ###
 
 ###   get doc 1
-GET {{host}}/api/metadata/5c6d6623590801000139430f
+GET {{host}}/rh/v2/api/metadata/5d0956b9028ae24619924e73
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    create documnent two
-POST {{host}}/api/metadata
+POST {{host}}/rh/v2/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -90,7 +90,7 @@ Content-Type: application/json
 ###
 
 ###   get doc 2
-GET {{host}}/api/metadata/5c65868eda6a750c18085326
+GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
