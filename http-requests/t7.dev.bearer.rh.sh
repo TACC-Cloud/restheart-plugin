@@ -21,7 +21,7 @@
 # client app: test key: v3tiR9dgNUJOPHDyCVBN3zzQAc8a  secret: UqJ1uGuwYk1qkfYRiTk6pf_a_Xoa
 # tmp token: feccf059b8072fe542b8e765c1d3f9
 
-export tok=26bad0f3806052ad2bde638a73423cc
+export tok=2756576e1ead814859a51af5283a92
 export host=https://dev.tenants.aloedev.tacc.cloud
 export base=rh/v2
 
@@ -32,7 +32,7 @@ export base=rh/v2
 # curl -sku "admin:Strangerinastrangel@nd" -X POST  -d "apiName=RestHeart&apiVersion=v2&apiProvider=admin" "$host"/clients/v2/rsthrtapp/subscriptions
 
 # simple list of api db
-# curl -v -H "Accept: application/json" -H "Authorization : Bearer $tok" "$host/$base"/api
+curl -v -H "Accept: application/json" -H "Authorization : Bearer $tok" "$host/$base"/api
 
 # create a collection for large files
 # curl -X PUT -H "Content-Type: application/json" -H "Authorization : Bearer $tok" "$host/$base"/api/mybucket.files
@@ -53,10 +53,10 @@ export base=rh/v2
 # curl -H "Accept: application/json" -H "Authorization : Bearer $tok" "$host/$base"/api/mybucket.files/jenkins-the-definitive-guide.pdf/binary > tmp.pdf
 
 # create a document in metadata collection   # s
-curl -v -X POST -H "Authorization : Bearer $tok" -H "Content-Type: application/json" -d "@document1.json" "$host/$base"/api/metadata
+# curl -v -X POST -H "Authorization : Bearer $tok" -H "Content-Type: application/json" -d "@document1.json" "$host/$base"/api/metadata
 
 # get the document created in metadata
-curl -H "Accept: application/json" -H "Authorization : Bearer $tok" "$host/$base"/api/metadata/5d095783028ae24619924ea0 | jq
+# curl -H "Accept: application/json" -H "Authorization : Bearer $tok" "$host/$base"/api/metadata/5d095783028ae24619924ea0 | jq
 
 
 
