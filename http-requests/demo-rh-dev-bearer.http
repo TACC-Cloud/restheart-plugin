@@ -5,7 +5,8 @@
 #     "name": "rsthrtapp",
 #     "consumerKey": "k258KfoXvHLor0TyF310QNbria0a",
 #     "consumerSecret": "iGG8JW1m3i1ev22k265qvj65Ndwa"
-
+#
+#  Used for testing RH server and configuration in anticipation of the EU
 
 ###  client create
 POST {{host}}/clients/v2
@@ -97,7 +98,14 @@ Content-Type: application/json
 ###
 
 ###   get all docs
-GET {{host}}/api/metadata
+GET {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   get all docs and only show the name property {'name':1}
+GET {{host}}/rh/v2/api/metadata?keys=%7B%27name%27%3A1%7D
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -105,14 +113,14 @@ Content-Type: application/json
 
 
 ###   get doc 1
-GET {{host}}/api/metadata/5c65868eda6a750c18085326
+GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    find document two
-GET {{host}}/api/metadata?filter={'name':'mongodb'}
+GET {{host}}/rh/v2/api/metadata?filter={'name':'mongodb'}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -120,7 +128,7 @@ Content-Type: application/json
 ###
 
 ###    find document one
-GET {{host}}/api/metadata?filter={'name':'steve'}
+GET {{host}}/rh/v2/api/metadata?filter={'name':'steve'}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
