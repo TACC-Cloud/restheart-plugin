@@ -4,11 +4,11 @@ services:
    restheart:
       image: jenkins2.tacc.utexas.edu:5000/aloe/restheart:3.10.0
       container_name: restheart
-      command: java -Dfile.encoding=UTF-8 -server -cp restheart-3.10.0.jar:restheart-aloeplugin-1.0.jar:lib/* org.restheart.Bootstrapper --envFile etc/config.properties etc/restheart.yml
-
+      command: java -Dfile.encoding=UTF-8 -agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=n -server -cp restheart-3.10.0.jar:restheart-aloeplugin-1.0.jar:lib/* org.restheart.Bootstrapper --envFile etc/config.properties etc/restheart.yml
 
       ports:
-         - "8580:8080"
+         - "8199:8080"
+         - "8002:8000"
       ### Mount a local configuration folder
       ### to overwrite default restheart.yml and/or security.yml
       volumes:
