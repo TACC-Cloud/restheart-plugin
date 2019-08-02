@@ -1,37 +1,21 @@
-# user testuser7:testuser7
+# user testuser8:testuser8
 # tenant header
 # host https://dev.tenants.aloedev.tacc.cloud
 # client create
-#     "name": "rsthrtapp",
-#     "consumerKey": "k258KfoXvHLor0TyF310QNbria0a",
-#     "consumerSecret": "iGG8JW1m3i1ev22k265qvj65Ndwa"
+#     "name": "rhapp",
+#     "consumerKey": "ZQjwVGnlZxAcJVM2KfTp_Ep9Mzca",
+#     "consumerSecret": "1SWrddB2JBXZEchZyigpRmU10qwa"
 #
 #  Used for testing RH server and configuration in anticipation of the EU
 
-###  client create
-POST {{host}}/clients/v2
-Authorization: Basic {{user}} {{pass}}
-Content-Type: application/x-www-form-urlencoded
-
-clientName=rsthrtapp&description=test client app
-
-###
-
-###  restheart calls to dev
-GET {{host}}/rh/v2/api/metadata
+###  RH call to v1public/sample
+GET {{host}}/rh/v2/v1public/sample
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
-###  RH call to api/metadata for 1 document
-GET {{host}}/rh/v2/api/metadata?pagesize=1&np
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-
-###  RH call to /v1public/sample for 1 document
+###  RH call to v1public/sample for 1 document
 GET {{host}}/rh/v2/v1public/sample?pagesize=1&np
 Authorization: Bearer {{token}}
 Content-Type: application/json
@@ -46,49 +30,33 @@ Content-Type: application/json
 ###
 
 ###  RH call to /v1public/rearrangement document count
+#
+# DON'T use until i can investigate
+#
+# count parameter generates an internal server error
 GET {{host}}/rh/v2/v1public/rearrangement?count=true
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
-###   create GridFs bucket collection
-PUT {{host}}/rh/v2/api/mybucket.files
+###   get v1public
+#  this returns Response code: 403 (Forbidden); with our current authoriztion settings
+GET {{host}}/rh/v2/v1public
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
-###   get db
-GET {{host}}/rh/v2/api
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-
-###   create db
-PUT {{host}}/rh/v2/api
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-
-###   create collection
-PUT {{host}}/rh/v2/api/metadata
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-
-###   get coll
-GET {{host}}/rh/v2/api/metadata
+###   get rearrangement
+GET {{host}}/rh/v2/v1public/rearrangement
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    create documnent one
-POST {{host}}/rh/v2/api/metadata
+POST {{host}}/rh/v2/v1public/rearrangement
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -100,14 +68,46 @@ Content-Type: application/json
 ###
 
 ###   get doc 1
-GET {{host}}/rh/v2/api/metadata/5d0956b9028ae24619924e73
+GET {{host}}/rh/v2/v1public/rearrangement/5b0221082da651f2a63273f0
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
+###   get all docs
+GET {{host}}/rh/v2/v1public/rearrangement
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   get all docs and only show the name property {'name':1}
+GET {{host}}/rh/v2/v1public/rearrangement?keys=%7B%27name%27%3A1%7D
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+
+
+
+
+
+
+###############    possible useful RH calls    ###############
+
+###  client create
+POST {{host}}/clients/v2
+Authorization: Basic {{user}} {{pass}}
+Content-Type: application/x-www-form-urlencoded
+
+clientName=rsthrtapp&description=test client app
+
+###
+
 ###    create documnent two
-POST {{host}}/rh/v2/api/metadata
+# don't exercise this request yet
+POST {{host}}/rh/v2/v1public/rearrangement
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -119,36 +119,36 @@ Content-Type: application/json
 ###
 
 ###   get doc 2
-GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
+GET {{host}}/rh/v2/v1public/rearrangement/5c65868eda6a750c18085326
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
-###   get all docs
-GET {{host}}/rh/v2/api/metadata
+
+###   create db
+PUT {{host}}/rh/v2/api
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
-###   get all docs and only show the name property {'name':1}
-GET {{host}}/rh/v2/api/metadata?keys=%7B%27name%27%3A1%7D
+###   create collection
+PUT {{host}}/rh/v2/v1public/rearrangement
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
-
 
 ###   get doc 1
-GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
+GET {{host}}/rh/v2/v1public/rearrangement/5c65868eda6a750c18085326
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    find document two
-GET {{host}}/rh/v2/api/metadata?filter={'name':'mongodb'}
+GET {{host}}/rh/v2/v1public/rearrangement?filter={'name':'mongodb'}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -156,13 +156,12 @@ Content-Type: application/json
 ###
 
 ###    find document one
-GET {{host}}/rh/v2/api/metadata?filter={'name':'steve'}
+GET {{host}}/rh/v2/v1public/rearrangement?filter={'name':'steve'}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 
 ###
-
 
 # /${JOB_ID}?status=${JOB_STATUS}&name=${JOB_NAME}&startTime=${JOB_START_TIME}&endTime=${JOB_END_TIME}&submitTime=${JOB_SUBMIT_TIME}&archiveSystem=${JOB_ARCHIVE_SYSTEM}&archivePath=${JOB_ARCHIVE_PATH}&message=${JOB_ERROR}https://de.sciapps.org/notification
 

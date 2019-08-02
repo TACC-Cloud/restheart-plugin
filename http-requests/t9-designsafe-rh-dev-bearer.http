@@ -1,24 +1,24 @@
-# user testuser7:testuser7
+# user testuser9:testuser9
 # tenant header
 # host https://dev.tenants.aloedev.tacc.cloud
 # client create
-#     "name": "rsthrtapp",
-#     "consumerKey": "k258KfoXvHLor0TyF310QNbria0a",
-#     "consumerSecret": "iGG8JW1m3i1ev22k265qvj65Ndwa"
+#     "name": "rhapp",
+#     "consumerKey": "FfnMG94Iia5bmCxVyHRfIYSLv1Ia",
+#     "consumerSecret": "4jJVL2fJDIotOntMrTsus4t8cPUa"
 #
 #  Used for testing RH server and configuration in anticipation of the EU
 
-###  client create
-POST {{host}}/clients/v2
-Authorization: Basic {{user}} {{pass}}
-Content-Type: application/x-www-form-urlencoded
-
-clientName=rsthrtapp&description=test client app
+###  RH call to api/metadata with count
+# returns 10 documents + count info
+GET {{host}}/rh/v2/api/metadata?pagesize=10&count=true
+Authorization: Bearer {{token}}
+Content-Type: application/json
 
 ###
 
-###  restheart calls to dev
-GET {{host}}/rh/v2/api/metadata
+###  RH call to api/metadata without count
+# returns 10 documents
+GET {{host}}/rh/v2/api/metadata?pagesize=10&count=true
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -31,26 +31,6 @@ Content-Type: application/json
 
 ###
 
-###  RH call to /v1public/sample for 1 document
-GET {{host}}/rh/v2/v1public/sample?pagesize=1&np
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-
-###  RH call to /v1public/rearrangement for 1 document
-GET {{host}}/rh/v2/v1public/rearrangement?pagesize=1&np
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-
-###  RH call to /v1public/rearrangement document count
-GET {{host}}/rh/v2/v1public/rearrangement?count=true
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
 
 ###   create GridFs bucket collection
 PUT {{host}}/rh/v2/api/mybucket.files
@@ -162,6 +142,20 @@ Content-Type: application/json
 
 
 ###
+
+
+#########   Utilities   #########
+###  client create
+POST {{host}}/clients/v2
+Authorization: Basic {{user}} {{pass}}
+Content-Type: application/x-www-form-urlencoded
+
+clientName=rsthrtapp&description=test client app
+
+###
+
+
+
 
 
 # /${JOB_ID}?status=${JOB_STATUS}&name=${JOB_NAME}&startTime=${JOB_START_TIME}&endTime=${JOB_END_TIME}&submitTime=${JOB_SUBMIT_TIME}&archiveSystem=${JOB_ARCHIVE_SYSTEM}&archivePath=${JOB_ARCHIVE_PATH}&message=${JOB_ERROR}https://de.sciapps.org/notification
