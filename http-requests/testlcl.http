@@ -1,0 +1,40 @@
+# no user
+# no tenant header
+# host http://localhost:8080
+# no authentication needed
+# direct access to aloe.dev.8 mongodb running on port 27019
+# hosts api and v1public databases
+
+
+
+
+###  restheart call to aloe.staging mongodb on 27019 with api db
+GET {{host}}/api/metadata
+Content-Type: application/json
+
+###
+
+###  restheart call to aloe.staging mongodb on 27019
+GET {{host}}/v1public/rearrangement?filter={"filename_uuid":{"$in":["1948223626708128231-242ac11c-0001-012","4003519959228944871-242ac11c-0001-012","618590739453186536-242ac11c-0001-012","4112542236705559016-242ac11c-0001-012","228498719656439320-242ac11c-0001-012","5799996335674626536-242ac11c-0001-012"]},"ir_cdr3_substrings":"CASSP"}
+Content-Type: application/json
+
+###
+
+###   get v1public/rearrangement collection count
+GET {{host}}/v1public/rearrangement?count=true
+Content-Type: application/json
+
+###
+
+###   get all docs from rearrangement
+GET {{host}}/v1public/rearrangement?pagesize=1000
+Content-Type: application/json
+
+###
+
+###    find document one
+GET {{host}}/api/metadata?filter={'name':'steve'}
+Authorization: Basic {{user}} {{pass}}
+Content-Type: application/json
+
+

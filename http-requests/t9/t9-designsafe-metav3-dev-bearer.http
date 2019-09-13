@@ -1,16 +1,16 @@
 # user testuser9:testuser9
-# tenant header
+# tenant header designsafe
 # host https://dev.tenants.aloedev.tacc.cloud
 # client create
 #     "name": "rhapp",
 #     "consumerKey": "FfnMG94Iia5bmCxVyHRfIYSLv1Ia",
 #     "consumerSecret": "4jJVL2fJDIotOntMrTsus4t8cPUa"
 #
-#  Used for testing RH server and configuration in anticipation of the EU
+#  Used for testing RH server and configuration in anticipation of the EU grant implementation
 
 ###  RH call to api/metadata with count
 # returns 10 documents + count info
-GET {{host}}/rh/v2/api/metadata?pagesize=10&count=true
+GET {{host}}/meta/v3/api/metadata?pagesize=10&count=true
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -18,14 +18,14 @@ Content-Type: application/json
 
 ###  RH call to api/metadata without count
 # returns 10 documents
-GET {{host}}/rh/v2/api/metadata?pagesize=10&count=true
+GET {{host}}/meta/v3/api/metadata?pagesize=10&count=true
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###  RH call to api/metadata for 1 document
-GET {{host}}/rh/v2/api/metadata?pagesize=1&np
+GET {{host}}/meta/v3/api/metadata?pagesize=1&np
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -33,42 +33,42 @@ Content-Type: application/json
 
 
 ###   create GridFs bucket collection
-PUT {{host}}/rh/v2/api/mybucket.files
+PUT {{host}}/meta/v3/api/mybucket.files
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###   get db
-GET {{host}}/rh/v2/api
+GET {{host}}/meta/v3/api
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###   create db
-PUT {{host}}/rh/v2/api
+PUT {{host}}/meta/v3/api
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###   create collection
-PUT {{host}}/rh/v2/api/metadata
+PUT {{host}}/meta/v3/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###   get coll
-GET {{host}}/rh/v2/api/metadata
+GET {{host}}/meta/v3/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    create documnent one
-POST {{host}}/rh/v2/api/metadata
+POST {{host}}/meta/v3/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -80,14 +80,14 @@ Content-Type: application/json
 ###
 
 ###   get doc 1
-GET {{host}}/rh/v2/api/metadata/5d0956b9028ae24619924e73
+GET {{host}}/meta/v3/api/metadata/5d0956b9028ae24619924e73
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    create documnent two
-POST {{host}}/rh/v2/api/metadata
+POST {{host}}/meta/v3/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -99,21 +99,21 @@ Content-Type: application/json
 ###
 
 ###   get doc 2
-GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
+GET {{host}}/meta/v3/api/metadata/5c65868eda6a750c18085326
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###   get all docs
-GET {{host}}/rh/v2/api/metadata
+GET {{host}}/meta/v3/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###   get all docs and only show the name property {'name':1}
-GET {{host}}/rh/v2/api/metadata?keys=%7B%27name%27%3A1%7D
+GET {{host}}/meta/v3/api/metadata?keys=%7B%27name%27%3A1%7D
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -121,14 +121,14 @@ Content-Type: application/json
 
 
 ###   get doc 1
-GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
+GET {{host}}/meta/v3/api/metadata/5c65868eda6a750c18085326
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###
 
 ###    find document two
-GET {{host}}/rh/v2/api/metadata?filter={'name':'mongodb'}
+GET {{host}}/meta/v3/api/metadata?filter={'name':'mongodb'}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -136,7 +136,7 @@ Content-Type: application/json
 ###
 
 ###    find document one
-GET {{host}}/rh/v2/api/metadata?filter={'name':'steve'}
+GET {{host}}/meta/v3/api/metadata?filter={'name':'steve'}
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

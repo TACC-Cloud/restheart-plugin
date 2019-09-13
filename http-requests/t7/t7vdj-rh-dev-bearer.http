@@ -1,0 +1,168 @@
+# user testuser7:testuser7
+# tenant header
+# host https://dev.tenants.aloedev.tacc.cloud
+# client create
+#     "name": "rsthrtapp",
+#     "consumerKey": "k258KfoXvHLor0TyF310QNbria0a",
+#     "consumerSecret": "iGG8JW1m3i1ev22k265qvj65Ndwa"
+
+
+###  client create
+POST {{host}}/clients/v2
+Authorization: Basic {{user}} {{pass}}
+Content-Type: application/x-www-form-urlencoded
+
+clientName=rsthrtapp&description=test client app
+
+###
+
+###  restheart calls to dev v1public/rearrangement
+GET {{host}}/rh/v2/v1public/rearrangement?filter={"filename_uuid":{"$in":["1948223626708128231-242ac11c-0001-012","4003519959228944871-242ac11c-0001-012","618590739453186536-242ac11c-0001-012","4112542236705559016-242ac11c-0001-012","228498719656439320-242ac11c-0001-012","5799996335674626536-242ac11c-0001-012","4033258450224288231-242ac11c-0001-012","4184909141241565671-242ac11c-0001-012","5609034397249245671-242ac11c-0001-012","718414304763122151-242ac11c-0001-012","6797709546090205671-242ac11c-0001-012","6883137545118552551-242ac11c-0001-012","7421212147472339431-242ac11c-0001-012","2793798164965822951-242ac11c-0001-012","1579330526434291225-242ac11c-0001-012","2531606071098928665-242ac11c-0001-012","8135350378552562151-242ac11c-0001-012","4774237821721842151-242ac11c-0001-012","2030956310420722151-242ac11c-0001-012","7643474506018525671-242ac11c-0001-012","1399495100277592551-242ac11c-0001-012","7938145744078630425-242ac11c-0001-012","2826183524049424871-242ac11c-0001-012","1394485106826482151-242ac11c-0001-012","8722753741409292776-242ac11c-0001-012","293362754747297305-242ac11c-0001-012","6976913440255045145-242ac11c-0001-012","1635382813071970791-242ac11c-0001-012","2790340604725358105-242ac11c-0001-012","6614953319037857305-242ac11c-0001-012","596856757474291225-242ac11c-0001-012","5077093416066018840-242ac11c-0001-012","7490867308604494311-242ac11c-0001-012","7325296860612390425-242ac11c-0001-012","4953493538860765671-242ac11c-0001-012","6933014270285442585-242ac11c-0001-012","8419526778125217305-242ac11c-0001-012","6706274296562848231-242ac11c-0001-012","5310786499607457305-242ac11c-0001-012","2849748875730162151-242ac11c-0001-012","1714309734955937305-242ac11c-0001-012","6164974964043485671-242ac11c-0001-012","3494100618393939480-242ac11c-0001-012","2728737446246739480-242ac11c-0001-012","1189861865604846056-242ac11c-0001-012","5738267484920475160-242ac11c-0001-012","3374231585856155160-242ac11c-0001-012","8904775073569435160-242ac11c-0001-012","2366080924918616551-242ac11c-0001-012","1602908186092376551-242ac11c-0001-012","1841923116114776551-242ac11c-0001-012","2541616238306136551-242ac11c-0001-012","2197374609531736551-242ac11c-0001-012","1993707260355416551-242ac11c-0001-012","3628844259615576551-242ac11c-0001-012","3252733973504856551-242ac11c-0001-012","2989624276951896551-242ac11c-0001-012","2685411743376216551-242ac11c-0001-012","2848663450297176551-242ac11c-0001-012","3438706057421656551-242ac11c-0001-012","4931851437876056551-242ac11c-0001-012","4181735399629656551-242ac11c-0001-012","3924638657291096551-242ac11c-0001-012","4476756703191896551-242ac11c-0001-012","4744762662462296551-242ac11c-0001-012","4357957907784536551-242ac11c-0001-012","6205695788196696551-242ac11c-0001-012","6393557657723736551-242ac11c-0001-012","5215877625160536551-242ac11c-0001-012","7158276584776536551-242ac11c-0001-012","5953881855632216551-242ac11c-0001-012","5531257073705816551-242ac11c-0001-012","6819446614795096551-242ac11c-0001-012","7640859110155096551-242ac11c-0001-012","7972301736387416551-242ac11c-0001-012","7313153105470296551-242ac11c-0001-012","7461458326201176551-242ac11c-0001-012","6964444710708056551-242ac11c-0001-012","8733756488295256551-242ac11c-0001-012","7793588147200856551-242ac11c-0001-012","8263242821018456551-242ac11c-0001-012","8112833066312536551-242ac11c-0001-012","8602072790999896551-242ac11c-0001-012","8425807333172056551-242ac11c-0001-012","7309695685264535065-242ac11c-0001-012","7885350151947415065-242ac11c-0001-012","8945756074025816551-242ac11c-0001-012","8961797805343895065-242ac11c-0001-012","9084118473933975065-242ac11c-0001-012","8485700680582295065-242ac11c-0001-012","6738379135550615065-242ac11c-0001-012","5624006920930455065-242ac11c-0001-012","7745763714827415065-242ac11c-0001-012","7446748091679895065-242ac11c-0001-012","7591789137265815065-242ac11c-0001-012","7066128089908375065-242ac11c-0001-012","6088937130722455065-242ac11c-0001-012","6240077029868695065-242ac11c-0001-012","6880327804683415065-242ac11c-0001-012","6389112395039895065-242ac11c-0001-012","5939858815878295065-242ac11c-0001-012","6576544767837335065-242ac11c-0001-012","5168912186246295065-242ac11c-0001-012","5462430251254935065-242ac11c-0001-012","5039977268020375065-242ac11c-0001-012","4858300151399575065-242ac11c-0001-012","5765010697258135065-242ac11c-0001-012","5338391595746455065-242ac11c-0001-012"]},"ir_cdr3_substrings":"CASSP"}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  restheart calls to dev v1public/rearrangement  brief
+GET {{host}}/rh/v2/v1public/rearrangement?filter={"filename_uuid":{"$in":["1948223626708128231-242ac11c-0001-012","4003519959228944871-242ac11c-0001-012","618590739453186536-242ac11c-0001-012","4112542236705559016-242ac11c-0001-012","228498719656439320-242ac11c-0001-012","5799996335674626536-242ac11c-0001-012"]},"ir_cdr3_substrings":"CASSP"}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  !!!! don't run this  !!!!  restheart calls to dev v1public/rearrangement  brief
+GET {{host}}/rh/v2/v1public/rearrangement?count
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+
+
+###  restheart calls to dev api metadata
+GET {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###  restheart calls to dev api metadata
+GET {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   create GridFs bucket collection
+PUT {{host}}/rh/v2/api/mybucket.files
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   get db
+GET {{host}}/rh/v2/api
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   create db
+PUT {{host}}/rh/v2/api
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   create collection
+PUT {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   get coll
+GET {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###    create documnent one
+POST {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "steve",
+  "rating": "cool"
+}
+
+###
+
+###   get doc 1
+GET {{host}}/rh/v2/api/metadata/5d0956b9028ae24619924e73
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###    create documnent two
+POST {{host}}/rh/v2/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "mongodb",
+  "rating": "cool as well"
+}
+
+###
+
+###   get doc 2
+GET {{host}}/rh/v2/api/metadata/5c65868eda6a750c18085326
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   get all docs
+GET {{host}}/api/metadata
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+
+###   get doc 1
+GET {{host}}/api/metadata/5c65868eda6a750c18085326
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###    find document two
+GET {{host}}/api/metadata?filter={'name':'mongodb'}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+###
+
+###    find document one
+GET {{host}}/api/metadata?filter={'name':'steve'}
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+
+###
+
+
+# /${JOB_ID}?status=${JOB_STATUS}&name=${JOB_NAME}&startTime=${JOB_START_TIME}&endTime=${JOB_END_TIME}&submitTime=${JOB_SUBMIT_TIME}&archiveSystem=${JOB_ARCHIVE_SYSTEM}&archivePath=${JOB_ARCHIVE_PATH}&message=${JOB_ERROR}https://de.sciapps.org/notification
+
+
+
+# {
+#   "exception" : "SystemError",
+#   "error" : "SystemError: Warning caught during route execution: Use of uninitialized value in string eq at /home/zlu/project/AgaveWeb/MaizeCode/agavedancer/lib/iPC/SciApps.pm line 1341.\n at /usr/local/lib/perl5/site_perl/5.16.1/Dancer/Hook.pm line 62.\n"
+# }

@@ -16,7 +16,7 @@ clientName=rsthrtapp&description=test client app
 
 ###
 
-###  restheart calls to dev
+###  restheart calls to dev api metadata
 GET {{host}}/rh/v2/api/metadata
 Authorization: Bearer {{token}}
 Content-Type: application/json

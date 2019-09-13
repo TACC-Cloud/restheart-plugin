@@ -6,7 +6,7 @@
 #     "consumerKey": "ZQjwVGnlZxAcJVM2KfTp_Ep9Mzca",
 #     "consumerSecret": "1SWrddB2JBXZEchZyigpRmU10qwa"
 #
-#  Used for testing RH server and configuration in anticipation of the EU
+#  Used for testing RH server and configuration in anticipation of the VDJ project
 
 ###  RH call to v1public/sample
 GET {{host}}/rh/v2/v1public/sample
@@ -29,9 +29,24 @@ Content-Type: application/json
 
 ###
 
+###  RH call to /v1public/rearrangement for 1000 documents
+#  works as expected
+GET {{host}}/rh/v2/v1public/rearrangement?pagesize=1000&np
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
 ###  RH call to /v1public/rearrangement document count
 #
-# DON'T use until i can investigate
+# DON'T use until i can investigate###  RH call to /v1public/rearrangement for 1 document
+GET {{host}}/rh/v2/v1public/rearrangement?pagesize=1&np
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+
 #
 # count parameter generates an internal server error
 GET {{host}}/rh/v2/v1public/rearrangement?count=true
@@ -41,7 +56,16 @@ Content-Type: application/json
 ###
 
 ###   get v1public
-#  this returns Response code: 403 (Forbidden); with our current authoriztion settings
+#  this lists collections in v1public for vdj user with role Internal/vdj
+GET {{host}}/rh/v2/v1public
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###
+
+###   get v1public with testuser9 credentials
+#  this lists collections in v1public for designsafe user with role Internal/designsafe
+#  expect to get 403  !Results as expected
 GET {{host}}/rh/v2/v1public
 Authorization: Bearer {{token}}
 Content-Type: application/json

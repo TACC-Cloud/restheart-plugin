@@ -225,10 +225,10 @@ access-manager:
 # Identity Authentication Manager
 # All requests are bound to the specified user
 
-auth-mechanism:
-    implementation-class: org.restheart.security.impl.AloeJwtAuthenticationManagerFactory
-    username: a
-    pwd: a
+#auth-mechanism:
+#    implementation-class: org.restheart.security.impl.AloeJwtAuthenticationManagerFactory
+#    username: a
+#    pwd: a
 
 # Jwt Authentication Manager
 # Authentication via Json Web Token https://jwt.io
