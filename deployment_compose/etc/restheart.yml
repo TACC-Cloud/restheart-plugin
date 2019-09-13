@@ -377,11 +377,11 @@ query-time-limit: {{{query-time-limit}}}
 
 # Time limit in milliseconds for processing aggregations on the server (without network latency). 0 means no time limit
 aggregation-time-limit: {{{aggregation-time-limit}}}
-# Number of I/O threads created for non-blocking tasks. at least 2. suggested value: core*2
-io-threads: 2
+# Number of I/O threads created for non-blocking tasks. at least 2. suggested value: core*2  aloe.dev.2 4 cores
+io-threads: 8
 
-# Number of threads created for blocking tasks (such as ones involving db access). suggested value: core*16
-worker-threads: 8
+# Number of threads created for blocking tasks (such as ones involving db access). suggested value: core*16  aloe.dev.2 4 cores
+worker-threads: 64
 
 # Use 16k buffers for best performance - as in linux 16k is generally the default amount of data that can be sent in a single write() call
 buffer-size: 16384
@@ -400,8 +400,7 @@ connection-options:
 
   # The default maximum size of a request entity.
   # Defaults to unlimited.
-  MAX_ENTITY_SIZE:
-    -1
+  MAX_ENTITY_SIZE: -1
     #The default maximum size of the HTTP entity body when using the mutiltipart parser.
     # Generall this will be larger than MAX_ENTITY_SIZE
     # If this is not specified it will be the same as MAX_ENTITY_SIZE

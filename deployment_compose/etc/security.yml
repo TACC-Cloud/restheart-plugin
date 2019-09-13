@@ -1,5 +1,27 @@
 ## RESTHeart simple security configuration file.
 ---
+## Configuration for file based Identity Manager
+users:
+  - userid: a
+    password: a
+    roles: [admins]
+
+  - userid: testuser7
+    password: testuser7
+    roles: [users]
+
+  - userid: user2
+    password: changeit
+    roles: [users]
+
+  - userid: testuser7
+    password: testuser7
+    roles: [users, Internal/everyone]
+
+  - userid: admin
+    password: anna1200
+    roles: [users, admins]
+
 ## Configuration for file based Access Manager
 
 ## Look at undertow documentation for information about predictates syntax
